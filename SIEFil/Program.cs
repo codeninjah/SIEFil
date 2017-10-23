@@ -18,9 +18,6 @@ namespace SIEFil
 			var amount = 0M;
 			var rowCount = 0;
 
-			//Console.WriteLine(sökväg);
-
-			var accounts = new Dictionary<string, decimal>();
 			var streamReader = File.OpenText(sökväg);
 
 
@@ -36,7 +33,11 @@ namespace SIEFil
 					var match = line.Split(' ');
 					amount += decimal.Parse(match[6], CultureInfo.InvariantCulture);
 					rowCount++;
+
+					Console.WriteLine($"Kontonr: {match[4]} och belopp: {match[6]}");
 				}
+
+				
 
 			}
 
