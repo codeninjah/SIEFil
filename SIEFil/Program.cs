@@ -28,10 +28,11 @@ namespace SIEFil
 			{
 				var line = streamReader.ReadLine();
 
+				if (line == null)
+					break;
+
 				if (line.Contains("#TRANS"))
 				{
-					if (line == null)
-						break;
 					var match = line.Split(' ');
 
 					var accountId = match[4];
