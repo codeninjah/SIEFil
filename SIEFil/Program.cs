@@ -34,8 +34,6 @@ namespace SIEFil
 				if (line.Contains("#TRANS"))
 				{
 					var match = line.Split(' ');
-
-					var accountId = match[4];
 					amount += decimal.Parse(match[6], CultureInfo.InvariantCulture);
 					rowCount++;
 				}
