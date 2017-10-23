@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace SIEFil
@@ -11,15 +13,38 @@ namespace SIEFil
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Ange SIE Filens sölväg");
+			Console.WriteLine("Ange SIE Filens sökväg");
 			var sökväg = Console.ReadLine();
+			var amount = 0M;
+			var rowCount = 0;
 
-			var lines = File.ReadAllLines(sökväg);
+			//Console.WriteLine(sökväg);
 
-			if (line.Contains("#TRANS")
+			var accounts = new Dictionary<string, decimal>();
+			var streamReader = File.OpenText(sökväg);
+
+
+			while (true)
+			{
+				var line = streamReader.ReadLine();
+
+				if (line.Contains("#TRANS"))
 				{
+					if (line == null)
+						break;
+					var match = line.Split(' ');
 
+					var accountId = match[4];
+					amount += decimal.Parse(match[6], CultureInfo.InvariantCulture);
+					rowCount++;
 				}
+
+			}
+
+				Console.WriteLine($"Totala antalet konton är: {rowCount}");
+				Console.WriteLine($"Totala beloppet på kontona är: {amount}");
+				Console.ReadKey();
+			}
 		}
 	}
-}
+
