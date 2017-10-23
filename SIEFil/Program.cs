@@ -34,10 +34,9 @@ namespace SIEFil
 					amount += decimal.Parse(match[6], CultureInfo.InvariantCulture);
 					rowCount++;
 
+					//Övning 2
 					Console.WriteLine($"Kontonr: {match[4]} och belopp: {match[6]}");
 				}
-
-				
 
 			}
 
